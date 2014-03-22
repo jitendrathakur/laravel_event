@@ -45,6 +45,7 @@ class Managers extends Eloquent{
         // validation pass
         return true;
     }
+    //===============================================
 
     public function errors()
     {

@@ -5,6 +5,14 @@ class EventsController extends \BaseController {
 
 	protected $layout = 'layouts.default';
 
+
+	public function __construct(Events $event)
+	{
+		//parent::__construct();
+		$this->event = $event;
+	}
+
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -35,22 +43,43 @@ class EventsController extends \BaseController {
 	 */
 	public function store()
 	{
-		$input = Input::all();
+		// $input = Input::all();
 		
-		$obj =new Events();
+		// $obj =new Events();
 
-		$obj->managers_id 		= $input['managers_id'];
-		$obj->title 			= $input['title'];
-		$obj->description 		= $input['description'];
-		$obj->venue 			= $input['venue'];
-		$obj->picture 			= $input['picture'];
-		$obj->start_date 		= $input['start_date'];
-		$obj->end_date 			= $input['end_date'];
-		$obj->created_at		= date('Y-m-d H:m:s');
+		// $obj->managers_id 		= $input['managers_id'];
+		// $obj->title 			= $input['title'];
+		// $obj->description 		= $input['description'];
+		// $obj->venue 			= $input['venue'];
+		// $obj->picture 			= $input['picture'];
+		// $obj->start_date 		= $input['start_date'];
+		// $obj->end_date 			= $input['end_date'];
+		// $obj->created_at		= date('Y-m-d H:m:s');
 
-		$obj->save();
+		// $obj->save();
 
-		return Redirect::to('events')->with('success', 'Insert Record Successfully');
+		// return Redirect::to('events')->with('success', 'Insert Record Successfully');
+
+
+		$input = Input::all();
+		$input = array_except($input, '_token');
+
+		if ($this->event->validate($input)) {
+			
+			$events = $this->event->create($input);
+			
+			return Redirect::to('events')->with('success', 'Insert Record Successfully');
+			
+		} else {
+			// failure
+		    $errors = $this->event->errors();			
+		    return Redirect::route('events.create')
+			->withInput()
+			->withErrors($errors)
+			->with('error', 'There were validation errors.');
+		}		
+
+
 	}
 
 	/**
@@ -89,22 +118,41 @@ class EventsController extends \BaseController {
 	 */
 	public function update($id)
 	{
+		// $input = Input::all();
+		// $obj = Events::find($id);
+
+		// $obj->managers_id 		= $input['managers_id'];
+		// $obj->title 			= $input['title'];
+		// $obj->description 		= $input['description'];
+		// $obj->venue 			= $input['venue'];
+		// $obj->picture 			= $input['picture'];
+		// $obj->start_date 		= $input['start_date'];
+		// $obj->end_date 			= $input['end_date'];
+		// $obj->updated_at = date('Y-m-d H:m:s');
+
+		// $obj->save();
+
+		// return Redirect::to('events')->with('success', 'updated Record Successfully');
+
+
 		$input = Input::all();
-		$obj = Events::find($id);
+		$input = array_except($input, '_token');
 
-		$obj->managers_id 		= $input['managers_id'];
-		$obj->title 			= $input['title'];
-		$obj->description 		= $input['description'];
-		$obj->venue 			= $input['venue'];
-		$obj->picture 			= $input['picture'];
-		$obj->start_date 		= $input['start_date'];
-		$obj->end_date 			= $input['end_date'];
-		$obj->updated_at = date('Y-m-d H:m:s');
-
-		$obj->save();
-
-		return Redirect::to('events')->with('success', 'updated Record Successfully');
-
+		if ($this->event->validate($input)) {	
+			
+			$event = $this->event->find($id);
+			$events = $event->update($input);
+			
+			return Redirect::to('events')->with('success', 'Updated Record Successfully');
+			
+		} else {
+			// failure
+		    $errors = $this->event->errors();			
+		    return Redirect::route('events.edit', $id)
+			->withInput()
+			->withErrors($errors)
+			->with('error', 'There were validation errors.');
+		}
 	}
 
 	/**

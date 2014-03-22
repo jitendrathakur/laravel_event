@@ -2,39 +2,48 @@
 
 @section('content')
 
-<a class="btn btn-success" href="{{ url('managers') }}"> Back </a>
-
 {{ Form::model($data, array( 'route' => array('managers.update', $id), 'method' => 'patch') ) }}
 
 <fieldset>
     <legend>Edit Event Manager</legend>
 
 
-	<table class="table">
-		
-		<tr>
-			<th>  <label> {{ Form::label('email', 'Email') }} </label></th>
-			<td>{{  Form::text('email') }}<span class="help-inline">{{ $errors->first('email','<span class="error">:message</span>'); }}</span></td>
-		</tr>
+	<div class="control-group">
+		    <label class="control-label" for="email">
+				{{ Form::label('email', 'Email') }} 
+			</label>
+			<div class="controls">
+				{{  Form::text('email') }}
+				<span class="help-inline">{{ $errors->first('email','<span class="error">:message</span>'); }}</span>
+			</div>
+		</div>
+
+		<div class="control-group">
+		    <label class="control-label" for="email">
+				{{ Form::label('username', 'User Name') }}
+			</label>
+			<div class="controls">
+				{{  Form::text('username') }}<span class="help-inline">{{ $errors->first('username','<span class="error">:message</span>'); }}</span>
+			</div>
+		</div>
+
+		<div class="control-group">
+		    <label class="control-label" for="email">
+				{{ Form::label('password', 'Password') }} 
+			</label>
+			<div class="controls">
+				{{  Form::password('password') }}<span class="help-inline">{{ $errors->first('password','<span class="error">:message</span>'); }}</span>
+			</div>
+		</div>
 
 
-		<tr>
-			<th>  <label>{{ Form::label('username', 'User Name') }} </label></th>
-			<td>{{  Form::text('username') }}<span class="help-inline">{{ $errors->first('username','<span class="error">:message</span>'); }}</span></td>
-		</tr>
+		<div class="control-group">
+		   <div class="controls">
+			{{ Form::submit('Update', array('class'=>'btn btn-primary')) }}
 
-
-		<tr>
-			<th>  <label> {{ Form::label('password', 'Password') }} </label></th>
-			<td>{{  Form::password('password') }}<span class="help-inline">{{ $errors->first('password','<span class="error">:message</span>'); }}</span></td>
-		</tr>
-
-
-		<tr>
-			<td > {{ Form::submit('Update', array('class'=>'btn btn-primary')) }}</td>
-		</tr>
-	
-	</table>
+			<a class="btn btn-danger" href="{{ url('managers') }}"> Cancel </a>
+			</div>
+		</div>
 
 {{ Form::close() }}
 

@@ -4,7 +4,7 @@
 
 <h2>Events Record</h2> 
 
-<a class="btn btn-large btn-primary" href="{{ url('events/create', $parameters = array()) }}"> Add </a>
+<a class="btn btn-large btn-primary" href="{{ url('events/create', $parameters = array()) }}"> Add Events </a>
 
 <table class="table table-hover table-bordered table-striped">
 	<tr>

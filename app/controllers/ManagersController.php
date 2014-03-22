@@ -46,7 +46,7 @@ class ManagersController extends \BaseController {
 		$input = Input::all();
 		$input = array_except($input, '_token');
 
-		if ($this->manager->validate($input)) {	
+		if ($this->manager->validate($input)) {
 			
 			$managers = $this->manager->create($input);
 			
