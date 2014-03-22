@@ -14,20 +14,21 @@
 		
 		<tr>
 			<th>  <label> {{ Form::label('email', 'Email') }} </label></th>
-			<td>{{  Form::text('email', null) }}</td>
+			<td>{{  Form::text('email') }}<span class="help-inline">{{ $errors->first('email','<span class="error">:message</span>'); }}</span></td>
 		</tr>
 
 
 		<tr>
 			<th>  <label>{{ Form::label('username', 'User Name') }} </label></th>
-			<td>{{  Form::text('username', null) }}</td>
+			<td>{{  Form::text('username') }}<span class="help-inline">{{ $errors->first('username','<span class="error">:message</span>'); }}</span></td>
 		</tr>
 
 
 		<tr>
 			<th>  <label> {{ Form::label('password', 'Password') }} </label></th>
-			<td>{{  Form::password('password', null) }}</td>
+			<td>{{  Form::password('password') }}<span class="help-inline">{{ $errors->first('password','<span class="error">:message</span>'); }}</span></td>
 		</tr>
+
 
 		<tr>
 			<td > {{ Form::submit('Update', array('class'=>'btn btn-primary')) }}</td>

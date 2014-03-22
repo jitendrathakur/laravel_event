@@ -11,7 +11,7 @@
 
 <h2>Show All Records</h2> 
 
-<a class="btn btn-large btn-primary" href="{{ url('managers/create', $parameters = array()) }}"> Add </a>
+<a class="btn btn-large btn-primary" href="{{ url('managers/create', $parameters = array()) }}"> Add Manager</a>
 
 
 

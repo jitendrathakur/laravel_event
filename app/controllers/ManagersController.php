@@ -5,6 +5,13 @@ class ManagersController extends \BaseController {
 
 	protected $layout = 'layouts.default';
 
+
+	public function __construct(Managers $manager)
+	{
+		//parent::__construct();
+		$this->manager = $manager;
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -37,29 +44,22 @@ class ManagersController extends \BaseController {
 
 
 		$input = Input::all();
+		$input = array_except($input, '_token');
 
-		$obj =new Managers();
-		$obj->email 		= $input['email'];
-		$obj->username 		= $input['username'];
-		$obj->password 		= $input['password'];
-		$obj->created_at	= date('Y-m-d H:m:s');
-
-
-		$validation = $obj->validate($input, 'store');
-
-	    if ($validation->fails())
-	    {
-	        $messages = $validation->messages();
-	        // print_r($messages);
-	        // die;
-
-	        return Redirect::to('managers')->withErrors($messages);
-	    }
-	    else
-	    {
-	    	$obj->save();
-	    	return Redirect::to('managers')->with('success', 'Insert Record Successfully');
-	    }		
+		if ($this->manager->validate($input)) {	
+			
+			$managers = $this->manager->create($input);
+			
+			return Redirect::to('managers')->with('success', 'Insert Record Successfully');
+			
+		} else {
+			// failure
+		    $errors = $this->manager->errors();			
+		    return Redirect::route('managers.create')
+			->withInput()
+			->withErrors($errors)
+			->with('error', 'There were validation errors.');
+		}			
 		
 	}
 
@@ -98,18 +98,26 @@ class ManagersController extends \BaseController {
 	 */
 	public function update($id)
 	{
+		
 		$input = Input::all();
-		$obj = Managers::find($id);
+		$input = array_except($input, '_token');
 
-		$obj->email 		= $input['email'];
-		$obj->username 		= $input['username'];
-		$obj->password 		= $input['password'];
-		$obj->updated_at = date('Y-m-d H:m:s');
-
-		$obj->save();
-
-		return Redirect::to('managers')->with('success', 'updated Record Successfully');
-
+		if ($this->manager->validate($input)) {	
+			
+			$manager = $this->manager->find($id);
+			$managers = $manager->update($input);
+			
+			return Redirect::to('managers')->with('success', 'Updated Record Successfully');
+			
+		} else {
+			// failure
+		    $errors = $this->manager->errors();			
+		    return Redirect::route('managers.edit', $id)
+			->withInput()
+			->withErrors($errors)
+			->with('error', 'There were validation errors.');
+		}
+		
 	}
 
 	/**

@@ -5,6 +5,17 @@
 
 class Managers extends Eloquent{
 
+	protected $guarded = array();
+
+	private $rules = array(
+		'username'     => 'required|min:5',
+        'email'    => 'required|email',
+        'password' => 'required|min:4'
+        // .. more rules here ..
+    );
+
+    private $errors;
+
 	/**
 	 * The database table used by the model.
 	 *
@@ -12,34 +23,33 @@ class Managers extends Eloquent{
 	 */
 	protected $table = 'managers';
 
-	public function validate($input, $scenario, $id = null)
-	{
-	    $rules = [];
+	public function validate($data)
+    {
+    	
+    	$availableRule = array();
+    	foreach($this->rules as $field => $rules) {
+    		if (isset($data[$field])) {
+    			$availableRule[$field] = $rules;
+    		}    	
+    	}
+        // make a new validator object
+        $v = Validator::make($data, $availableRule);
 
-	    //'username'     => 'required|min:5|unique:users',
-	    //'password' => 'required|min:4|confirmed'
-	  	//update : 'name'     => 'required|min:5|unique:users' .',name,' . $id,
-	    switch($scenario)
-	    {
-	        case 'store':
-	            $rules   = [
-	                'username'     => 'required|min:5',
-	                'email'    => 'required|email',
-	                'password' => 'required|min:4'
-	            ];
-	            break;
+        if ($v->fails())
+        {
+            // set errors and return false
+            $this->errors = $v->errors();
+            return false;
+        }
 
-	        case 'update';
-	            $rules   = [
-	                'username'     => 'required|min:5' .',username,' . $id,
-	                'email'    => 'required|email' .',email,' . $id,
-	                'password' => 'min:4'
-	            ];
-	        break;    
-	    }
+        // validation pass
+        return true;
+    }
 
-	    return Validator::make($input, $rules);
-	}
+    public function errors()
+    {
+        return $this->errors;
+    }
 	//===============================================
 
  	public function events()
