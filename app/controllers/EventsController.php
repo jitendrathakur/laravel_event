@@ -43,24 +43,6 @@ class EventsController extends \BaseController {
 	 */
 	public function store()
 	{
-		// $input = Input::all();
-		
-		// $obj =new Events();
-
-		// $obj->managers_id 		= $input['managers_id'];
-		// $obj->title 			= $input['title'];
-		// $obj->description 		= $input['description'];
-		// $obj->venue 			= $input['venue'];
-		// $obj->picture 			= $input['picture'];
-		// $obj->start_date 		= $input['start_date'];
-		// $obj->end_date 			= $input['end_date'];
-		// $obj->created_at		= date('Y-m-d H:m:s');
-
-		// $obj->save();
-
-		// return Redirect::to('events')->with('success', 'Insert Record Successfully');
-
-
 		$input = Input::all();
 		$input = array_except($input, '_token');
 
@@ -118,23 +100,6 @@ class EventsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		// $input = Input::all();
-		// $obj = Events::find($id);
-
-		// $obj->managers_id 		= $input['managers_id'];
-		// $obj->title 			= $input['title'];
-		// $obj->description 		= $input['description'];
-		// $obj->venue 			= $input['venue'];
-		// $obj->picture 			= $input['picture'];
-		// $obj->start_date 		= $input['start_date'];
-		// $obj->end_date 			= $input['end_date'];
-		// $obj->updated_at = date('Y-m-d H:m:s');
-
-		// $obj->save();
-
-		// return Redirect::to('events')->with('success', 'updated Record Successfully');
-
-
 		$input = Input::all();
 		$input = array_except($input, '_token');
 
