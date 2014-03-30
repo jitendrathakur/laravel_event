@@ -48,10 +48,21 @@ class EventsController extends \BaseController {
 
 		$input = Input::all();
 		$input = array_except($input, '_token');
+		$destinationPath = $eventImage = '';
+		
+		if (Input::hasFile('image'))
+		{
+			$destinationPath = 'uploads/events/'.str_random(8);
+			$eventImage = Input::file('image')->getClientOriginalName();
 
+			Input::file('image')->move($destinationPath, $eventImage);				   		
+		}
 
-
+		
 		if ($this->event->validate($input)) {
+
+			$input['image_path'] = $destinationPath;
+			$input['image'] = $eventImage;
 			
 			$events = $this->event->create($input);
 			
@@ -108,7 +119,22 @@ class EventsController extends \BaseController {
 		$input = Input::all();
 		$input = array_except($input, '_token');
 
-		if ($this->event->validate($input)) {	
+		$destinationPath = $eventImage = '';
+		
+		if (Input::hasFile('image'))
+		{
+			$destinationPath = 'uploads/events/'.str_random(8);
+			$eventImage = Input::file('image')->getClientOriginalName();
+
+			Input::file('image')->move($destinationPath, $eventImage);				   		
+		}
+
+		
+		if ($this->event->validate($input)) {
+
+			$input['image_path'] = $destinationPath;
+			$input['image'] = $eventImage;
+		
 			
 			$event = $this->event->find($id);
 			$events = $event->update($input);

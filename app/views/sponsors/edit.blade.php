@@ -112,7 +112,7 @@ Group
 
  	<div class="row-fluid">
  		
- 		{{ Form::model($data, array( 'route' => array('sponsors.update', $id), 'method' => 'patch') ) }}
+ 		{{ Form::model($data, array( 'route' => array('sponsors.update', $id), 'method' => 'patch', 'files'=> true) ) }}
       	<div class="span12">
            	<div class="grid simple">
                 <div class="grid-body no-border"> <br>
@@ -138,7 +138,7 @@ Group
 									<span> * </span> 
 								</label>
 								<div class="controls">
-								  	{{  Form::text('compnayLogo', null, array('class'=>'span12') ) }}
+								  	{{  Form::file('compnayLogo') }}
 								  	<span class="help-inline">
 								  		{{ $errors->first('compnayLogo','<span class="error">:message</span>'); }}
 							  		</span>
@@ -217,7 +217,7 @@ Group
 									<span> * </span> 
 								</label>
 								<div class="controls">
-								  	{{  Form::text('image', null, array('class'=>'span12') ) }}
+								  	{{  Form::file('image') }}
 								  	<span class="help-inline">
 								  		{{ $errors->first('image','<span class="error">:message</span>'); }}
 							  		</span>

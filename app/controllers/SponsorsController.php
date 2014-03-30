@@ -47,8 +47,34 @@ class SponsorsController extends \BaseController {
 		$input = Input::all();
 		$input = array_except($input, '_token');
 
+		$destinationPath = $destinationPathcompanyLogo = $companyImage = $eventImage = '';
+		
+		if (Input::hasFile('image'))
+		{
+			$destinationPath = 'uploads/sponser/'.str_random(8);
+			$eventImage = Input::file('image')->getClientOriginalName();
+
+			Input::file('image')->move($destinationPath, $eventImage);				   		
+		}
+
+		if (Input::hasFile('compnayLogo'))
+		{
+			$destinationPathcompanyLogo = 'uploads/sponser/'.str_random(8);
+			$companyImage = Input::file('compnayLogo')->getClientOriginalName();
+
+			Input::file('compnayLogo')->move($destinationPathcompanyLogo, $companyImage);				   		
+		}
+
+		
 		if ($this->sponsor->validate($input)) {
+
 			
+			$input['image_path'] = $destinationPath;
+			$input['image'] = $eventImage;
+
+			$input['company_path'] = $destinationPathcompanyLogo;
+			$input['compnayLogo'] = $companyImage;			
+
 			$sponsors = $this->sponsor->create($input);
 			
 			return Redirect::to('sponsors')->with('success', 'Insert Record Successfully');
@@ -106,7 +132,33 @@ class SponsorsController extends \BaseController {
 		$input = Input::all();
 		$input = array_except($input, '_token');
 
-		if ($this->sponsor->validate($input)) {	
+		$destinationPath = $destinationPathcompanyLogo = $companyImage = $eventImage = '';
+		
+		if (Input::hasFile('image'))
+		{
+			$destinationPath = 'uploads/sponser/'.str_random(8);
+			$eventImage = Input::file('image')->getClientOriginalName();
+
+			Input::file('image')->move($destinationPath, $eventImage);				   		
+		}
+
+		if (Input::hasFile('compnayLogo'))
+		{
+			$destinationPathcompanyLogo = 'uploads/sponser/'.str_random(8);
+			$companyImage = Input::file('compnayLogo')->getClientOriginalName();
+
+			Input::file('compnayLogo')->move($destinationPathcompanyLogo, $companyImage);				   		
+		}
+
+		
+		if ($this->sponsor->validate($input)) {
+
+			
+			$input['image_path'] = $destinationPath;
+			$input['image'] = $eventImage;
+
+			$input['company_path'] = $destinationPathcompanyLogo;
+			$input['compnayLogo'] = $companyImage;					
 			
 			$sponsor = $this->sponsor->find($id);
 			$sponsors = $sponsor->update($input);

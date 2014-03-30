@@ -185,7 +185,8 @@ Group
 	</div>
 	<!-- END CHAT -->
 
-@if(!empty($errors->all()))
+<?php $errorMsg = $errors->all(); ?>
+@if(!empty($errorMsg))
 <script type="text/javascript">  
 	
 	$(document).ready(function(){

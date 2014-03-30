@@ -126,7 +126,7 @@
 	<h6> Add New Sponsors </h6>
 
  	<div class="row-fluid">
- 		{{ Form::open(array('route' => 'sponsors.store', 'class' => 'form-horizontal')) }}
+ 		{{ Form::open(array('route' => 'sponsors.store', 'class' => 'form-horizontal', 'files'=> true)) }}
       	<div class="span12">
            	<div class="grid simple">
                 <div class="grid-body no-border"> <br>
@@ -139,9 +139,9 @@
 									<span> * </span> 
 								</label>
 								<div class="controls">
-								  	{{  Form::text('companyname', '', array('class'=>'span12') ) }}
+								  	{{  Form::text('companyName', '', array('class'=>'span12') ) }}
 								  	<span class="help-inline">
-								  		{{ $errors->first('companyname','<span class="error">:message</span>'); }}
+								  		{{ $errors->first('companyName','<span class="error">:message</span>'); }}
 							  		</span>
 								</div>
 							</div>
@@ -152,9 +152,9 @@
 									<span> * </span> 
 								</label>
 								<div class="controls">
-								  	{{  Form::text('compnaylogo', '', array('class'=>'span12') ) }}
+								  	{{  Form::file('compnayLogo') }}
 								  	<span class="help-inline">
-								  		{{ $errors->first('compnaylogo','<span class="error">:message</span>'); }}
+								  		{{ $errors->first('compnayLogo','<span class="error">:message</span>'); }}
 							  		</span>
 								</div>
 							</div>
@@ -165,9 +165,9 @@
 									<span> * </span> 
 								</label>
 								<div class="controls">
-								  	{{  Form::text('boothnumber', '', array('class'=>'span12') ) }}
+								  	{{  Form::text('boothNumber', '', array('class'=>'span12') ) }}
 								  	<span class="help-inline">
-								  		{{ $errors->first('boothnumber','<span class="error">:message</span>'); }}
+								  		{{ $errors->first('boothNumber','<span class="error">:message</span>'); }}
 							  		</span>
 								</div>
 							</div>
@@ -220,7 +220,7 @@
 								  	{{  Form::text('productsname', '', array('class'=>'span12') ) }}
 								  	
 								  	<span class="help-inline">
-								  		{{ $errors->first('productsname','<span class="error">:message</span>'); }}
+								  		{{ $errors->first('productsName','<span class="error">:message</span>'); }}
 							  		</span>
 								</div>
 							</div>
@@ -231,7 +231,7 @@
 									<span> * </span> 
 								</label>
 								<div class="controls">
-								  	{{  Form::text('image', '', array('class'=>'span12') ) }}
+								  	{{  Form::file('image') }}
 								  	<span class="help-inline">
 								  		{{ $errors->first('image','<span class="error">:message</span>'); }}
 							  		</span>
@@ -246,8 +246,8 @@
 								<div class="controls">
 								  	{{  Form::textarea('productdescription', '', array('class'=>'span12', 'rows'=>6) ) }}
 								  	<span class="help-inline">
-								  		{{ $errors->first('productdescription','<span class="error">:message</span>'); }}
-							  		</span>
+								  		{{ $errors->first('productDescription','<span class="error">:message</span>'); }}
+							  		</span
 								</div>
 							</div>
 
@@ -274,7 +274,9 @@
 	</div>
 	<!-- END CHAT -->
 
-@if(!empty($errors->all()))
+
+<?php $errorMsg = $errors->all(); ?>
+@if(!empty($errorMsg))
 <script type="text/javascript">  
 	
 	$(document).ready(function(){

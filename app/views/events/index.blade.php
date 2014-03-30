@@ -68,6 +68,7 @@ Group
 						<th> Start Date  </th>
 						<th> End Date  </th>
 						<th> City  </th>
+						<th> Image  </th>
 						<th> Action </th>
 					</tr>
 				</thead>
@@ -83,6 +84,15 @@ Group
 							<td>{{{ $result->start_date }}}</td>
 							<td>{{{ $result->finish_date }}}</td>
 							<td>{{{ $result->city }}}</td>
+							<td>
+								<?php
+								$realPath = URL::to('uploads/events/dummy.png');
+					        	if (!empty($result->image_path) && !empty($result->image)) {        		
+					        		$realPath = URL::to($result->image_path."/".$result->image);        		
+					        	}
+					        	?>	
+					          	<img height="20" width="20" src="{{ $realPath }}" alt="event" />
+							</td>
 							<td class="action">
 								
 								<a href="{{ URL::action('EventsController@edit',$result->id ) }}">
@@ -121,7 +131,7 @@ Group
 	<h6> Add New Events </h6>
 
  	<div class="row-fluid">
- 		{{ Form::open(array('route' => 'events.store', 'class' => 'form-horizontal')) }}
+ 		{{ Form::open(array('route' => 'events.store', 'class' => 'form-horizontal', 'files'=> true)) }}
       	<div class="span12">
            	<div class="grid simple">
                 <div class="grid-body no-border"> <br>
@@ -195,6 +205,15 @@ Group
 							  		</span>
 								</div>
 							</div>
+
+
+				            <div class="control-group">
+				              {{ Form::label('image', 'Image:', array('class' => 'control-label')) }}
+				              <div class="controls">
+				                {{ Form::file('image') }}
+				                <span class="help-inline">{{ $errors->first('image','<span class="error">:message</span>'); }}</span>
+				              </div>
+				            </div>
 								 
 						</div>
                          </div>
@@ -219,7 +238,8 @@ Group
 	</div>
 	<!-- END CHAT -->
 
-@if(!empty($errors->all()))
+<?php $errorMsg = $errors->all(); ?>
+@if(!empty($errorMsg))
 <script type="text/javascript">  
 	
 	$(document).ready(function(){

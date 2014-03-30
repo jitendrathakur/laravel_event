@@ -40,11 +40,6 @@ CREATE TABLE IF NOT EXISTS `erp_binding_methods` (
 -- Dumping data for table `erp_binding_methods`
 --
 
-INSERT INTO `erp_binding_methods` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Hard', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(2, 'Soft', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, 'Wire-O', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-
 -- --------------------------------------------------------
 
 --

@@ -110,7 +110,7 @@ Group
 
  	<div class="row-fluid">
  		
- 		{{ Form::model($data, array( 'route' => array('events.update', $id), 'method' => 'patch') ) }}
+ 		{{ Form::model($data, array( 'route' => array('events.update', $id), 'method' => 'patch', 'files'=> true) ) }}
       	<div class="span12">
            	<div class="grid simple">
                 <div class="grid-body no-border"> <br>
@@ -183,6 +183,14 @@ Group
 							  		</span>
 								</div>
 							</div>
+
+							<div class="control-group">
+				              {{ Form::label('image', 'Image:', array('class' => 'control-label')) }}
+				              <div class="controls">
+				                {{ Form::file('image') }}
+				                <span class="help-inline">{{ $errors->first('image','<span class="error">:message</span>'); }}</span>
+				              </div>
+				            </div>
 								 
 						</div>
                  	</div>
