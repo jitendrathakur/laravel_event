@@ -54,9 +54,6 @@ Group
 						<th> Sponsorship Category  </th>
 						<th> Category  </th>
 						<th> Website  </th>
-						<th> Product Name  </th>
-						<th> Image  </th>
-						<th> Product Description	</th>
 						<th> Action </th>
 					</tr>
 				</thead>
@@ -73,14 +70,16 @@ Group
 							<td>{{{ $result->sponsorshipcategory }}}</td>
 							<td>{{{ $result->category }}}</td>
 							<td>{{{ $result->website }}}</td>
-							<td>{{{ $result->productsName }}}</td>
-							<td>{{{ $result->image }}}</td>
-							<td>{{{ $result->productDescription }}}</td>
+						
 							<td class="action">
+								<a href="{{ URL::action('SponsorsController@show',$result->id ) }}">
+									<span class="icon-eye-open"></span>
+								</a>
+								&nbsp;
 								<a href="{{ URL::action('SponsorsController@edit',$result->id ) }}">
 									<span class="icon-plus-sign-alt"></span>
 								</a>
-								&nbsp;
+
 								{{ Form::open(array('route' => array('sponsors.destroy', $result->id), 'method' => 'delete', 'style'=>'display:inline-block')) }}
 			        				<button  class="btn btn-link" type="submit" >
 			        					<a class="icon-trash"></a>
@@ -126,9 +125,9 @@ Group
 									<span> * </span> 
 								</label>
 								<div class="controls">
-								  	{{  Form::text('companyname', null, array('class'=>'span12') ) }}
+								  	{{  Form::text('companyName', null, array('class'=>'span12') ) }}
 								  	<span class="help-inline">
-								  		{{ $errors->first('companyname','<span class="error">:message</span>'); }}
+								  		{{ $errors->first('companyName','<span class="error">:message</span>'); }}
 							  		</span>
 								</div>
 							</div>
@@ -139,9 +138,9 @@ Group
 									<span> * </span> 
 								</label>
 								<div class="controls">
-								  	{{  Form::text('compnaylogo', null, array('class'=>'span12') ) }}
+								  	{{  Form::text('compnayLogo', null, array('class'=>'span12') ) }}
 								  	<span class="help-inline">
-								  		{{ $errors->first('compnaylogo','<span class="error">:message</span>'); }}
+								  		{{ $errors->first('compnayLogo','<span class="error">:message</span>'); }}
 							  		</span>
 								</div>
 							</div>
@@ -152,9 +151,9 @@ Group
 									<span> * </span> 
 								</label>
 								<div class="controls">
-								  	{{  Form::text('boothnumber', null, array('class'=>'span12') ) }}
+								  	{{  Form::text('boothNumber', null, array('class'=>'span12') ) }}
 								  	<span class="help-inline">
-								  		{{ $errors->first('boothnumber','<span class="error">:message</span>'); }}
+								  		{{ $errors->first('boothNumber','<span class="error">:message</span>'); }}
 							  		</span>
 								</div>
 							</div>
@@ -204,10 +203,10 @@ Group
 									<span> * </span> 
 								</label>
 								<div class="controls">
-								  	{{  Form::text('productsname', null, array('class'=>'span12') ) }}
+								  	{{  Form::text('productsName', null, array('class'=>'span12') ) }}
 								  	
 								  	<span class="help-inline">
-								  		{{ $errors->first('productsname','<span class="error">:message</span>'); }}
+								  		{{ $errors->first('productsName','<span class="error">:message</span>'); }}
 							  		</span>
 								</div>
 							</div>
@@ -231,9 +230,9 @@ Group
 									<span> * </span> 
 								</label>
 								<div class="controls">
-								  	{{  Form::textarea('productdescription', null, array('class'=>'span12', 'rows'=>6) ) }}
+								  	{{  Form::textarea('productDescription', null, array('class'=>'span12', 'rows'=>6) ) }}
 								  	<span class="help-inline">
-								  		{{ $errors->first('productdescription','<span class="error">:message</span>'); }}
+								  		{{ $errors->first('productDescription','<span class="error">:message</span>'); }}
 							  		</span>
 								</div>
 							</div>

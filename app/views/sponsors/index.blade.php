@@ -69,9 +69,6 @@
 						<th> Sponsorship Category  </th>
 						<th> Category  </th>
 						<th> Website  </th>
-						<th> Product Name  </th>
-						<th> Image  </th>
-						<th> Product Description	</th>
 						<th> Action </th>
 					</tr>
 				</thead>
@@ -88,17 +85,17 @@
 							<td>{{{ $result->sponsorshipcategory }}}</td>
 							<td>{{{ $result->category }}}</td>
 							<td>{{{ $result->website }}}</td>
-							<td>{{{ $result->productsName }}}</td>
-							<td>{{{ $result->image }}}</td>
-							<td>{{{ $result->productDescription }}}</td>
+							
 							<td class="action">
 								
+								<a href="{{ URL::action('SponsorsController@show',$result->id ) }}">
+									<span class="icon-eye-open"></span>
+								</a>
+								&nbsp;
+
 								<a href="{{ URL::action('SponsorsController@edit',$result->id ) }}">
 									<span class="icon-plus-sign-alt"></span>
 								</a>
-
-								&nbsp;
-								
 
 								{{ Form::open(array('route' => array('sponsors.destroy', $result->id), 'method' => 'delete', 'style'=>'display:inline-block')) }}
 									

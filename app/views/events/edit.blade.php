@@ -151,7 +151,7 @@ Group
 								</label>
 								<div class="controls">
 								  	
-								  	{{  Form::input('start_date', null, null,array('id' => 'start_date', 'class'=>'span6') ) }}
+								  	{{  Form::text('start_date', Input::get('start_date'), array('id' => 'start_date', 'class'=>'span6') ) }}
 								  	<span class="help-inline">
 								  		{{ $errors->first('start_date','<span class="error">:message</span>'); }}
 							  		</span>
@@ -165,7 +165,7 @@ Group
 								</label>
 								<div class="controls">
 								  	
-								  	{{  Form::input('finish_date', null, null,array('id' => 'finish_date', 'class'=>'span6') ) }}
+								  	{{  Form::text('finish_date', Input::get('finish_date'), array('id' => 'finish_date', 'class'=>'span6') ) }}
 								  	<span class="help-inline">
 								  		{{ $errors->first('finish_date','<span class="error">:message</span>'); }}
 							  		</span>
