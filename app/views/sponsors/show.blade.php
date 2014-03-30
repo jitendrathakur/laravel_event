@@ -62,7 +62,16 @@
 					
 					<tr>
 						<th> Image  </th>
-						<td>{{{ $result->image }}}</td>
+						<td>
+							<?php
+								$realPath = URL::to('uploads/events/dummy.png');
+					        	if (!empty($result->image_path) && !empty($result->image)) {        		
+					        		$realPath = URL::to($result->image_path."/".$result->image);        		
+					        	}
+					        	?>	
+					          	<img  width="80" src="{{ $realPath }}" alt="event" />
+
+						</td>
 					</tr>
 					
 					<tr>
