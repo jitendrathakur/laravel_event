@@ -34,7 +34,7 @@ Group
      <div class="span12">
           <div class="grid simple ">
 			<div class="grid-title">
-				<h4>Manager <span class="semi-bold">List</span></h4>
+				<h4>Event <span class="semi-bold">List</span></h4>
 				<div class="tools">
 					<a href="javascript:;" class="collapse"></a>
 					<a href="#grid-config" data-toggle="modal" class="config"></a>

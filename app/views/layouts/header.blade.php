@@ -12,7 +12,7 @@
       </ul>
       <!-- BEGIN LOGO -->
       <a href="index.html">
-        <img src="{{ asset('assets/img/logo.png') }}" class="logo"  data-src="assets/img/logo.png" data-src-retina="assets/img/logo2x.png" />
+        <img src="{{ asset('assets/img/logo.png') }}" class="logo"  data-src="{{ asset('assets/img/logo.png') }} " data-src-retina="{{ asset('assets/img/logo2x.png') }}" />
       </a>
       <!-- END LOGO -->
    
@@ -73,7 +73,7 @@
            
             </a>                        
             <div class="profile-pic"> 
-                <img alt="" src="assets/img/profiles/avatar_small.jpg" data-src="assets/img/profiles/avatar_small.jpg" data-src-retina="assets/img/profiles/avatar_small2x.jpg" width="35" height="35" /> 
+                <img alt="" src="{{ asset('assets/img/profiles/avatar_small.jpg') }}" data-src="{{ asset('assets/img/profiles/avatar_small.jpg') }}" data-src-retina="{{ asset('assets/img/profiles/avatar_small2x.jpg') }} " width="35" height="35" /> 
             </div>                  
         </div>
         

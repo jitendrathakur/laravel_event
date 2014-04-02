@@ -2,7 +2,7 @@
   <div class="page-sidebar" id="main-menu">
     <!-- BEGIN MINI-PROFILE -->
     <div class="user-info-wrapper">
-      <div class="profile-wrapper"> <img src="assets/img/profiles/avatar.jpg" data-src="assets/img/profiles/avatar.jpg" data-src-retina="assets/img/profiles/avatar2x.jpg" width="69" height="69" /> </div>
+      <div class="profile-wrapper"> <img src="{{ asset('assets/img/profiles/avatar.jpg') }} " data-src="{{ asset('assets/img/profiles/avatar.jpg') }}" data-src-retina="{{ asset('assets/img/profiles/avatar2x.jpg') }}" width="69" height="69" /> </div>
       <div class="user-info">
         <div class="greeting">Welcome</div>
         <div class="username">John <span class="semi-bold">Smith</span></div>

@@ -9,13 +9,13 @@ class Sponsor extends \Eloquent {
 	protected $guarded = array();
 
 	private $rules = array(
-		'companyname'     => 'required',
+		'companyName'     => 'required',
         'compnaylogo'     => 'required',
-        'boothnumber'     => 'required',
+        'boothNumber'     => 'required|numeric',
         'sponsorshipcategory'     => 'required',
         'category'     => 'required',
         'website'     => 'required',
-        'productsname'     => 'required',
+        'productsName'     => 'required',
         'image'     => 'required',
         'productdescription'     => 'required',
 
