@@ -16,6 +16,7 @@ class CreateUsersTable extends Migration
             'users',
             function (Blueprint $table) {
                 $table->increments('id');
+                $table->integer('group_id');
                 $table->string('username', 32);
                 $table->string('password', 64);
                 $table->string('email', 256);

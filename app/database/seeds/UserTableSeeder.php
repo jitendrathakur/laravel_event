@@ -10,6 +10,7 @@ class UserTableSeeder extends Seeder
      
         $users = [
             [
+                'group_id' => '1',
                 'username' => 'EventManager',
                 'email' => 'manish.jakhode@hiteshi.com',
                 'password' => Hash::make('@vent!')

@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call('TemplateTypeTableSeeder');
         $this->call('BindingMethodTableSeeder');
         $this->call('CoverTypeTableSeeder');
+        $this->call('GroupTableSeeder');
     }
 }
